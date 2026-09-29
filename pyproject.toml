@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "outis"
+version = "0.1.0"
+description = "Python client for Outis, the physical N-person authorization gate."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = []
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Typing :: Typed",
+]
+
+[project.urls]
+Homepage = "https://outis.tech"
+
+[project.optional-dependencies]
+durable = [
+    "cryptography>=42",
+]
+
+[dependency-groups]
+dev = [
+    "cryptography>=42",
+    "mypy>=2.3.1",
+    "pytest>=8",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/outis"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
